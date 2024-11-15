@@ -1,0 +1,196 @@
+:root{
+    --cor-texto : #fff5ee;
+    --cor-fundo : #10304d;
+    --cor-fundo2 : #298073;
+    --cor-fundo3 : #184C78;
+    --valor-borda: 10px;
+}
+
+body{
+    background-color: #10304d;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.border-info{
+    border-color: #fff5ee !important;
+}
+
+.bg-danger {
+    --bs-bg-opacity: 1;
+    background-color:#20577c00 !important;
+    background: linear-gradient(to bottom, #081929, #ffffff00);
+}
+
+a{
+    text-decoration: none;
+}
+
+.carrosel-fundo{
+    position: relative; 
+    z-index: -1;
+}
+
+.carrosel-fundo::before{
+    content: "";
+    background: 
+    linear-gradient(to top, #10304d, transparent), 
+    linear-gradient(to bottom, #10304d, transparent),
+    url('../Assets/UNCHARTED-4-CAPA.jpg') no-repeat center center;
+    background-size: 100%; 
+    position: absolute;
+    left: -29.5%;
+    top: -39%;
+    width: 150%; 
+    height: 150%;
+    z-index: -1; /* Coloca a imagem atrás do conteúdo */
+    opacity: 1; /* Se quiser uma leve transparência */
+}
+
+.card-img-top{
+    border-radius: 0px;
+}
+
+.conteudo-2 {
+    position: relative; 
+    z-index: -1;
+}
+
+.conteudo-2::before {
+    content: ""; /* Necessário para pseudo-elementos */
+    background: 
+    linear-gradient(to top, #10304d, transparent), /* Degradê de baixo para cima */
+    linear-gradient(to bottom, #10304d, transparent), /* Degradê de cima para baixo */
+    url('../Assets/background+GOD.jpg') no-repeat center center;
+    background-size: 100%; /* Aumenta a imagem além do tamanho do container */
+    
+    position: absolute;
+    left: -29.5%;
+    top: -39%;
+    width: 150%; /* Aumenta a largura para cobrir mais que o container */
+    height: 150%; /* Aumenta a altura para cobrir mais que o container */
+  
+    z-index: -1; /* Coloca a imagem atrás do conteúdo */
+    opacity: 1; /* Se quiser uma leve transparência */
+}
+
+.text-branco{
+    color: #fff5eebd;
+}
+
+img{
+    width: 90%;
+    border-radius: 25px;
+    border: 2px solid #fff5eebd;
+}
+
+.animate {
+    opacity: 0;
+    transform: translateY(20px); 
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate.show {
+    opacity: 1;
+    transform: translateY(0); 
+}
+
+.tamanho-carrosel{
+    width: 70%;
+    height: 100%;
+    border-radius: 25px;
+}
+
+.tamanho-carrosel img{
+    border-radius: 15px;
+}
+
+#teste-image{
+    width: 140px !important;
+    height: 140px !important;
+}
+
+.card{
+    border-radius:0;
+}
+
+.borda-inferior{
+    border-radius: 0 0 var(--valor-borda) var(--valor-borda) ;
+}
+
+.borda-superior{
+    border-radius: var(--valor-borda) var(--valor-borda) 0 0;
+}
+
+.card:hover{
+    background-color: black;
+    color: white;
+    transform: scale(1.05);
+    transition: all 0.5s ease;
+    z-index: 1; 
+    border-radius: var(--valor-borda);
+}
+
+.box-area{
+    width: 930px;
+}
+
+.right-box{
+    padding: 40px 30px 40px 40px;
+}
+
+::placeholder{
+    font-size: 16px;
+}
+
+.rounded-4{
+    border-radius: 20px;
+}
+
+.rounded-5{
+    border-radius: 30px;
+}
+
+.cartao-analise{
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+
+.avalicao{
+    color: white;
+    font-size: 35px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: rgb(95, 158, 0);
+    border-radius: 20px;
+    margin-left: 25px;
+}
+
+.main-content {
+    flex: 1;
+}
+
+footer {
+    color: white;
+    background-color: #081929 !important; /* Exemplo de cor de fundo */
+}
+
+footer a{
+    color: white;
+}
+
+.logo {
+    height: 150px !important;
+    width: 150px !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: none !important;
+    border-color: none !important;
+}
