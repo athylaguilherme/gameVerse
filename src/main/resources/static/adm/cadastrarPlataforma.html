@@ -22,15 +22,15 @@
       class="modal fade"
       id="modalCadastroPlataforma"
       tabindex="-1"
-      aria-labelledby="modalCadastroPlataformaLabel"
+      aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="labelCadastrarPlatafora">
+            <h5 class="modal-title" id="exampleModalLabel">
               Cadastrar Plataforma
-            </h1>
+            </h5>
             <button
               type="button"
               class="btn-close"
@@ -38,35 +38,23 @@
               aria-label="Close"
             ></button>
           </div>
-          <form action="">
-            <div class="modal-body">
-              <div class="mb-3 col-md-6">
-                <label for="plataforma" class="form-label"
-                  >Nome da Plataforma:</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="plataforma"
-                  aria-describedby="text"
-                />
-              </div>
-            </div>
-            <div class="modal-footer">
-              <div class="col">
-                <button
-                  type="button"
-                  class="btn btn-danger"
-                  data-bs-dismiss="modal"
-                >
-                  Cancelar
-                </button>
-              </div>
-              <div class="col text-end">
-                <button type="button" class="btn btn-success">Cadastrar</button>
-              </div>
-            </div>
-          </form>
+          <div class="modal-body">
+            <input
+              id="nomePlataforma"
+              type="text"
+              class="form-control"
+              placeholder="Nome da Plataforma"
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="adicionarPlataforma(document.getElementById('nomePlataforma').value)"
+            >
+              Salvar
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -87,5 +75,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="../js/menuAdm.js"></script>
+    <script src="../js/Admin/admin.js"></script>
   </body>
 </html>
