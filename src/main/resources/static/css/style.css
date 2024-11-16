@@ -6,6 +6,10 @@
     --cor-fundo3 : #184C78;
 }
 
+h3{
+    color: var(--cor-texto);
+}
+
 
 
 
@@ -85,6 +89,7 @@ img{
     border-radius: 25px;
     border: 2px solid #fff5eebd;
     box-shadow:40px 45px 20px 1px #06131f;
+    
 }
 
 footer {
