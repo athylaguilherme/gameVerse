@@ -25,6 +25,9 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private StatusRepository statusRepository;
 
+    @Autowired
+    private PlataformaRepository plataformaRepository;
+
     @Override
     public void run(String... args) throws Exception {
         // TODO Auto-generated method stub
@@ -58,6 +61,10 @@ public class TestConfig implements CommandLineRunner {
 
         administradorRepository.save(administrador1);
         administradorRepository.save(administrador2);
+
+
+        Plataforma p1 = new Plataforma(1, "Xbox", ativo);
+        plataformaRepository.save(p1); 
 
     }
 
