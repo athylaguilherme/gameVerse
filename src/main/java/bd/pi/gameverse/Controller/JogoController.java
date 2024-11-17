@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,4 +42,10 @@ public class JogoController {
     public ResponseEntity<Boolean> delete(@PathVariable Long id) {
         return ResponseEntity.ok().body(JogosService.deletarJogo(id));
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> alterarJogo(@PathVariable long id, @RequestBody Jogo jogo) {
+        return ResponseEntity.ok().body(JogosService.alterarJogo(jogo));
+    }
+
 }
