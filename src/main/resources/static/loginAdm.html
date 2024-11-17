@@ -50,6 +50,7 @@
                   type="text"
                   class="form-control form-control-lg bg-light fs-6"
                   placeholder="Nome de usuário"
+                  id="username"
                 />
               </div>
               <div class="input-group mb-1">
@@ -57,6 +58,7 @@
                   type="password"
                   class="form-control form-control-lg bg-light fs-6"
                   placeholder="Senha"
+                  id="password"
                 />
               </div>
               <div class="input-group mb-5 d-flex justify-content-between">
@@ -72,15 +74,15 @@
                 </div>
               </div>
               <div class="input-group mb-3">
-                <a href="./adm/administradores.html" class="btn btn-lg btn-primary w-100 fs-6"
-                  >Login</a
+                <button
+                  id="loginButton"
+                  class="btn btn-lg btn-primary w-100 fs-6"
                 >
+                  Login
+                </button>
               </div>
               <div class="input-group mb-3">
-                <a
-                  href="./login.html"
-                  class="btn btn-lg btn-light w-100 fs-6"
-                >
+                <a href="./login.html" class="btn btn-lg btn-light w-100 fs-6">
                   <small>Sou um usuário</small>
                 </a>
               </div>
@@ -105,5 +107,7 @@
       integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
       crossorigin="anonymous"
     ></script>
+    <script src="../static/js/Admin/loginadm.js"></script>
+    <script src="./js/Admin/loginadm.js"></script>
   </body>
 </html>

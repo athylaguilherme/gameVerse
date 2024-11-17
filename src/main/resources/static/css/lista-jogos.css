@@ -6,6 +6,8 @@
     --valor-borda: 10px;
 }
 
+
+
 body{
     background-color: #10304d;
     display: flex;
@@ -26,6 +28,13 @@ body{
 
 a{
     text-decoration: none;
+}
+
+img{
+    width: 90%;
+    border-radius: 25px;
+    border: 2px solid #fff5eebd;
+    box-shadow: none!important;
 }
 
 .carrosel-fundo{
@@ -80,12 +89,7 @@ a{
     color: #fff5eebd;
 }
 
-img{
-    width: 90%;
-    border-radius: 25px;
-    border: 2px solid #fff5eebd;
-    box-shadow: none!important;
-}
+
 
 .animate {
     opacity: 0;

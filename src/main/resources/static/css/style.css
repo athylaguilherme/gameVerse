@@ -6,10 +6,6 @@
     --cor-fundo3 : #184C78;
 }
 
-h3{
-    color: var(--cor-texto);
-}
-
 
 
 
@@ -24,6 +20,10 @@ body{
 }
 a{
     text-decoration: none;
+}
+
+h3{
+    color: var(--cor-texto);
 }
 
 .carrosel-fundo{

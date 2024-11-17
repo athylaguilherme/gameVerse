@@ -43,13 +43,13 @@ public class AdministradorService {
         return AdministradorRepository.findByNome(nome);
     }
 
-    public Boolean login(String email, String senha) {
-        if (email == null || senha == null) {
+    public Boolean login(String nome, String senha) {
+        if (nome == null || senha == null) {
             return false;
         }
 
         try {
-            Administrador Administrador = AdministradorRepository.findByEmail(email);
+            Administrador Administrador = AdministradorRepository.findByNomeAndSenha(nome, senha);
             if (Administrador != null && Administrador.getSenha().equals(senha)) {
                 return true;
             }
