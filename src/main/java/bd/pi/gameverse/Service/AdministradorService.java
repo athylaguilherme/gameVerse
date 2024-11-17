@@ -18,17 +18,37 @@ public class AdministradorService {
         return AdministradorRepository.save(Administrador);
     }
 
-    public Administrador alterarAdministrador(Administrador Administrador) {
-        Optional<Administrador> obj2 = AdministradorRepository.findById(Administrador.getId());
-        updateAdministrador(obj2, Administrador);
-        // Salvando o novo objeto no banco
-        return AdministradorRepository.save(obj2.get());
+    public Administrador alterarAdministrador(Administrador administrador) {
+        Optional<Administrador> obj2 = AdministradorRepository.findById(administrador.getId());
+        if (obj2.isPresent()) {
+            Administrador existingAdministrador = obj2.get();
+            updateAdministrador(existingAdministrador, administrador);
+            // Salvando o novo objeto no banco
+            return AdministradorRepository.save(existingAdministrador);
+        } else {
+            throw new RuntimeException("Administrador não encontrado com ID: " + administrador.getId());
+        }
     }
 
-    private void updateAdministrador(Optional<Administrador> newObj, Administrador obj) {
-        newObj.get().setNome(obj.getNome());
-        // newObj.setAutor(obj.getAutor());
+    private void updateAdministrador(Administrador existingAdministrador, Administrador updatedAdministrador) {
+        
+        if (updatedAdministrador.getNome() != null) {
+            existingAdministrador.setNome(updatedAdministrador.getNome());
+        }
+        if (updatedAdministrador.getNickname() != null) {
+            existingAdministrador.setNickname(updatedAdministrador.getNickname());
+        }
+        if (updatedAdministrador.getEmail() != null) {
+            existingAdministrador.setEmail(updatedAdministrador.getEmail());
+        }
+        if (updatedAdministrador.getSenha() != null) {
+            existingAdministrador.setSenha(updatedAdministrador.getSenha());
+        }
+        if (updatedAdministrador.getIdStatus() != null) {
+            existingAdministrador.setIdStatus(updatedAdministrador.getIdStatus());
+        }
     }
+
 
     public Boolean deletarAdministrador(Long id) {
         if (AdministradorRepository.existsById(id)) {
