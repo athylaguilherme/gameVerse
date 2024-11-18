@@ -49,15 +49,18 @@
             </ul>
             <!-- Botões de cadastro  -->
             <div class="ms-auto">
-              <button class="btn btn-outline-light me-2">
-                <a href="./login.html" class="text-light">Entrar</a>
-              </button>
-              <button class="btn btn-outline-light">
-                <a href="./cadastro.html" class="text-light"
-                  >Cadastrar</a
-                >
+              <div id="loginEntrar">
+                <button class="btn btn-outline-light me-2">
+                  <a href="./login.html" class="text-light">Entrar</a>
+                </button>
+                <button class="btn btn-outline-light">
+                  <a href="./cadastro.html" class="text-light"
+                    >Cadastrar</a
+                  >
+              </div>
               </button>
             </div>
+            <!-- Botões de Cadastrar -->
           </div>
         </div>
       </nav>
@@ -250,5 +253,13 @@
     ></script>
 
     <script src="./js/script.js"></script>
+    <script src="./js/user/usuario.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        indexLogado();
+      })
+    </script>
+
   </body>
 </html>

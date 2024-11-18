@@ -102,42 +102,48 @@
                 <h2>Bem vindo de volta</h2>
                 <p>Estamos felizes em ter você de volta.</p>
               </div>
-              <div class="input-group mb-3">
-                <input
-                  type="text"
-                  class="form-control form-control-lg bg-light fs-6"
-                  placeholder="E-mail"
-                />
-              </div>
-              <div class="input-group mb-1">
-                <input
-                  type="password"
-                  class="form-control form-control-lg bg-light fs-6"
-                  placeholder="Senha"
-                />
-              </div>
-              <div class="input-group mb-5 d-flex justify-content-between">
-                <div class="form-check">
+              <!-- Form -->
+              <form method="get" id="formLoginUsuario" onsubmit="LoginUsuario(event)">
+                <div class="input-group mb-3">
                   <input
-                    type="checkbox"
-                    class="form-check-input"
-                    id="formCheck"
+                    type="text"
+                    class="form-control form-control-lg bg-light fs-6"
+                    placeholder="nickname"
+                    id="nicknameLoginUsuario"
                   />
-                  <label for="formCheck" class="form-check-label text-secondary"
-                    ><small>Lembree de mim</small></label
-                  >
                 </div>
-                <div class="forgot">
-                  <small
-                    ><a href="./EsqcSenha.html"
-                      >Esqueceu a senha?</a
-                    ></small
-                  >
+                <div class="input-group mb-1">
+                  <input
+                    type="password"
+                    class="form-control form-control-lg bg-light fs-6"
+                    placeholder="Senha"
+                    id="senhaLoginUsuario"
+                  />
                 </div>
-              </div>
-              <div class="input-group mb-3">
-                <button class="btn btn-lg btn-primary w-100 fs-6">Login</button>
-              </div>
+                <div class="input-group mb-5 d-flex justify-content-between">
+                  <div class="form-check">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      id="formCheck"
+                    />
+                    <label for="formCheck" class="form-check-label text-secondary"
+                      ><small>Lembree de mim</small></label
+                    >
+                  </div>
+                  <div class="forgot">
+                    <small
+                      ><a href="./EsqcSenha.html"
+                        >Esqueceu a senha?</a
+                      ></small
+                    >
+                  </div>
+                </div>
+                <div class="input-group mb-3">
+                  <button id="btnLoginUsuario" type="submit" class="btn btn-lg btn-primary w-100 fs-6">Login</button>
+                </div>
+              </form>
+              <!-- Fim Form -->
               <div class="input-group mb-3">
                 <a
                   href="./loginAdm.html"
@@ -199,5 +205,6 @@
       integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
       crossorigin="anonymous"
     ></script>
+    <script src="./js/user/usuario.js"></script>
   </body>
 </html>

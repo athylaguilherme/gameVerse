@@ -16,8 +16,8 @@ import bd.pi.gameverse.Entities.Administrador;
 import bd.pi.gameverse.Service.AdministradorService;
 
 @RestController
-@RequestMapping("/api/administradores")
-public class AdministradorController {
+@RequestMapping("/api/administradoreshome")
+public class AdministradorHomeController {
 
     @Autowired
     private AdministradorService AdministradorsService;

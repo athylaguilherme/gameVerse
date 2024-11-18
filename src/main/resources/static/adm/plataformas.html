@@ -34,12 +34,13 @@
         
         <div class="row">
             <div class="col-9">
-                <input type="text" class="form-control">
-            </div>
-
-            <div class="col-2">
-                <a href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#cadastrarPlataforma"><i class="fa-solid fa-magnifying-glass fa-xl" style="color: #ffffff;"></i></a>
-            </div>
+                <input type="text" id="nomePlataforma" class="form-control" placeholder="Digite o nome da plataforma">
+              </div>
+              <div class="col-2">
+                <button class="btn btn-success" onclick="handleBuscarPlataformas()">
+                  <i class="fa-solid fa-magnifying-glass fa-xl" style="color: #ffffff;"></i>
+                </button>
+              </div>
         </div>
         
     </section>
@@ -257,5 +258,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="../js/menuAdm.js" ></script>
+    <script src="../js/Admin/admin.js"></script>
   </body>
 </html>

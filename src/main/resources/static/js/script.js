@@ -17,7 +17,6 @@ elements.forEach((el) => {
 
 function cadastrar() {
   fetch("http://localhost:8080/usuarios", {
-    // Substitua "porta" pela porta do seu servidor
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -54,7 +53,7 @@ document
     cadastrar();
   });
 
-// Função para buscar usuários por nome 
+// Função para buscar usuários por nome
 function buscarUsuarios() {
   fetch(`http://localhost:8080/usuarios/${nome}`, {
     headers: {

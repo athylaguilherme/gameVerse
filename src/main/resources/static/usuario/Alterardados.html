@@ -75,58 +75,72 @@
         <div class="row border rounded-5 p-3 bg-white shadow box-area">
           <div class="col-md-12 right-box">
             <div class="row align-items-center">
+            <!-- Form -->
+            <form method="post" id="formAlterarUsuario" onsubmit="AlterarUsuario(event)">
               <div class="header-text mb-4"></div>
               <!--Nome-->
 
               <div class="mb-3">
-                <label class="mb-2 fw-bold" for="nome">Nome:</label>
+                <label class="mb-2 fw-bold" for="nomeAlterarUsuario">Nome:</label>
                 <input
                   type="text"
                   class="form-control form-control-lg bg-light fs-6"
                   placeholder="Digite aqui seu nome"
-                  id="nome"
+                  id="nomeAlterarUsuario"
                 />
               </div>
               <!--Nick-->
               <div class="mb-3">
-                <label class="mb-2 fw-bold" for="nickname">Nickname:</label>
+                <label class="mb-2 fw-bold" for="nicknameAlterarUsuario">Nickname:</label>
                 <input
                   type="text"
                   class="form-control form-control-lg bg-light fs-6"
                   placeholder="Digite aqui seu nick"
-                  id="nickname"
+                  id="nicknameAlterarUsuario"
                 />
               </div>
               <!--E-mail-->
               <div class="mb-3">
-                <label class="mb-2 fw-bold" for="email">E-mail:</label>
+                <label class="mb-2 fw-bold" for="emailAlterarUsuario">E-mail:</label>
                 <input
                   type="text"
                   class="form-control form-control-lg bg-light fs-6"
                   placeholder="Digite aqui seu e-mail"
-                  id="email"
+                  id="emailAlterarUsuario"
                 />
               </div>
               <!--Telefone-->
               <div class="mb-3">
-                <label class="mb-2 fw-bold" for="telefone">Telefone:</label>
+                <label class="mb-2 fw-bold" for="telefoneAlterarUsuario">Telefone:</label>
                 <input
                   type="text"
                   class="form-control form-control-lg bg-light fs-6"
                   placeholder=" Digite aqui seu telefone"
-                  id="telefone"
+                  id="telefoneAlterarUsuario"
                 />
               </div>
+              <!-- Data de Nascimento -->
+              <div class="mb-3">
+                <label class="mb-2 fw-bold" for="nascimentoAlterarUsuario">Data de  Nascimento:</label>
+                <input
+                  type="date"
+                  class="form-control form-control-lg bg-light fs-6"
+                  placeholder=" Digite aqui seu nascimento"
+                  id="nascimentoAlterarUsuario"
+                />
+              </div>
+              <!-- Data de Nascimento -->
               <!--Senha-->
               <div class="mb-3"></div>
               <div
                 class="input-group mb-5 d-flex justify-content-between"
               ></div>
               <div class="input-group mb-3">
-                <button class="btn btn-lg btn-primary w-100 fs-6">
+                <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">
                   Alterar Dados
                 </button>
               </div>
+            </form>
             </div>
           </div>
         </div>
@@ -174,5 +188,13 @@
       integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
       crossorigin="anonymous"
     ></script>
+
+    <script src="../js/user/usuario.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        preencherAlterarDados();
+      })
+    </script>
   </body>
 </html>

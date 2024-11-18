@@ -16,13 +16,13 @@ import bd.pi.gameverse.Entities.Plataforma;
 import bd.pi.gameverse.Service.PlataformaService;
 
 @RestController
-@RequestMapping("/plataformas")
+@RequestMapping("/api/plataformas")
 public class PlataformaController {
 
     @Autowired
     private PlataformaService PlataformasService;
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Plataforma> create(@RequestBody Plataforma Plataforma) {
         return ResponseEntity.ok(PlataformasService.cadastrarPlataforma(Plataforma));
     }
