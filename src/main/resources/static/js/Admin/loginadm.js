@@ -24,7 +24,7 @@ document
 
         if (isAuthenticated) {
           // Ver para onde redirecionar
-          window.location.href = "...";
+          window.location.href = "../adm/administradores.html";
         } else {
           alert("Usuário ou senha inválidos.");
         }

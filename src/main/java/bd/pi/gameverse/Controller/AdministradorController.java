@@ -30,7 +30,7 @@ public class AdministradorController {
 
     @GetMapping("/{nome}")
     public ResponseEntity<Administrador> getNome(@PathVariable String nome) {
-        return ResponseEntity.ok().body(AdministradorsService.listarAdministradorPorNome(nome).get(0));
+        return ResponseEntity.ok().body(AdministradorsService.listarAdministradorPorEmail(nome).get(0));
     }
 
     @GetMapping

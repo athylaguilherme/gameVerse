@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import bd.pi.gameverse.Entities.Administrador;
@@ -22,14 +24,26 @@ public class AdministradorHomeController {
     @Autowired
     private AdministradorService AdministradorsService;
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Administrador> create(@RequestBody Administrador Administrador) {
         return ResponseEntity.ok(AdministradorsService.cadastrarAdministrador(Administrador));
     }
 
     @GetMapping("/{nome}")
     public ResponseEntity<Administrador> getNome(@PathVariable String nome) {
-        return ResponseEntity.ok().body(AdministradorsService.listarAdministradorPorNome(nome).get(0));
+        return ResponseEntity.ok().body(AdministradorsService.listarAdministradorPorEmail(nome).get(0));
+    }
+
+    @GetMapping("/email/{email}")
+    public ResponseEntity<?> getEmail(@PathVariable String email) {
+        List<Administrador> administradores = AdministradorsService.listarAdministradorPorEmail(email);
+
+        if (administradores.isEmpty()) {
+            return ResponseEntity.status(404).body("Nenhum administrador encontrado com o email fornecido.");
+        }
+
+        // Retorna apenas o primeiro administrador encontrado
+        return ResponseEntity.ok(administradores.get(0));
     }
 
     @GetMapping
@@ -46,4 +60,18 @@ public class AdministradorHomeController {
     public ResponseEntity<Boolean> delete(@PathVariable Long id) {
         return ResponseEntity.ok().body(AdministradorsService.deletarAdministrador(id));
     }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> update(
+            @PathVariable Long id,
+            @RequestBody Administrador administradorAtualizado) {
+        try {
+            Administrador updatedAdministrador = AdministradorsService.atualizarAdministrador(id,
+                    administradorAtualizado.getNome(), administradorAtualizado.getEmail());
+            return ResponseEntity.ok(updatedAdministrador);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(404).body(e.getMessage());
+        }
+    }
+
 }

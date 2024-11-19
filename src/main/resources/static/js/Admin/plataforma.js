@@ -59,8 +59,10 @@ async function buscarPlataformas(nome = "") {
 }
 
 // Função para atualizar a tabela com os dados das plataformas
+// Função para atualizar a tabela com os dados das plataformas
 function atualizarTabela(plataformas) {
-  const tabela = document.getElementById("tabela") || document.querySelector("tbody");
+  const tabela =
+    document.getElementById("tabela") || document.querySelector("tbody");
   tabela.innerHTML = ""; // Limpa a tabela
 
   if (plataformas.length === 0) {
@@ -69,35 +71,45 @@ function atualizarTabela(plataformas) {
   }
 
   plataformas.forEach((plataforma) => {
-    tabela.innerHTML += `
-      <tr>
-        <td>${plataforma.nome}</td>
-        <td>
-          <button 
-            type="button" 
-            class="btn btn-warning mb-2" 
-            data-id="${plataforma.id}" 
-            data-bs-toggle="modal" 
-            data-bs-target="#modalAtualizarPlataforma"
-          >
-            <i class="fa-solid fa-pen-to-square"></i> Editar
-          </button>
-          <button 
-            class="btn btn-danger" 
-            onclick="deletarPlataforma(${plataforma.id})"
-          >
-            Excluir
-          </button>
-        </td>
-      </tr>
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${plataforma.nome}</td>
+      <td>
+        <button 
+          type="button" 
+          class="btn btn-warning mb-2" 
+          data-id="${plataforma.id}" 
+          data-bs-toggle="modal" 
+          data-bs-target="#modalAtualizarPlataforma"
+        >
+          <i class="fa-solid fa-pen-to-square"></i> Editar
+        </button>
+        <button 
+          class="btn btn-danger mb-2" 
+          data-id="${plataforma.id}"
+        >
+          <i class="fa-solid fa-trash"></i> Excluir
+        </button>
+      </td>
     `;
+    tabela.appendChild(row);
   });
 
   // Configura eventos de "Editar"
   document.querySelectorAll(".btn-warning").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const plataformaId = btn.getAttribute("data-id");
+    btn.addEventListener("click", (event) => {
+      const plataformaId = event.currentTarget.getAttribute("data-id");
       carregarModal(plataformaId);
+    });
+  });
+
+  // Configura eventos de "Excluir"
+  document.querySelectorAll(".btn-danger").forEach((btn) => {
+    btn.addEventListener("click", (event) => {
+      const plataformaId = event.currentTarget.getAttribute("data-id");
+      if (confirm("Tem certeza de que deseja excluir esta plataforma?")) {
+        deletarPlataforma(plataformaId);
+      }
     });
   });
 }
@@ -105,9 +117,12 @@ function atualizarTabela(plataformas) {
 // Função para deletar uma plataforma pelo ID
 async function deletarPlataforma(id) {
   try {
-    const response = await fetch(`http://localhost:8080/api/plataformas/${id}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `http://localhost:8080/api/plataformas/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
 
     if (response.ok) {
       alert("Plataforma removida com sucesso!");
@@ -129,7 +144,7 @@ async function carregarModal(plataformaId) {
     // Preenche o campo de entrada com o nome da plataforma (ou deixa vazio)
     const plataformaInput = document.getElementById("plataforma");
     if (plataformaInput) {
-      plataformaInput.value = plataforma.nome || "";  // Se nome estiver vazio, o campo ficará vazio
+      plataformaInput.value = plataforma.nome || ""; // Se nome estiver vazio, o campo ficará vazio
     }
 
     // Configura o evento de clique no botão de salvar
@@ -146,15 +161,15 @@ async function carregarModal(plataformaId) {
     }
 
     // Exibe o modal
-    const modal = new bootstrap.Modal(document.getElementById("modalAtualizarPlataforma"));
+    const modal = new bootstrap.Modal(
+      document.getElementById("modalAtualizarPlataforma")
+    );
     modal.show();
-
   } catch (error) {
     console.error("Erro ao carregar os dados para atualização:", error);
     alert("Erro ao carregar dados da plataforma.");
   }
 }
-
 
 // Função para buscar plataforma pelo ID
 async function buscarPlataformaPorId(id) {
@@ -182,17 +197,20 @@ btnAdicionar?.addEventListener("click", () => {
 // Função para atualizar uma plataforma pelo ID
 async function atualizarPlataforma(id, nome) {
   try {
-    const response = await fetch(`http://localhost:8080/api/plataformas/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ nome }),
-    });
+    const response = await fetch(
+      `http://localhost:8080/api/plataformas/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ nome }),
+      }
+    );
 
     if (response.ok) {
       alert("Plataforma atualizada com sucesso!");
-      buscarPlataformas(""); 
+      buscarPlataformas("");
     } else {
       alert("Erro ao atualizar plataforma.");
     }
@@ -200,4 +218,77 @@ async function atualizarPlataforma(id, nome) {
     console.error("Erro ao atualizar plataforma:", error);
     alert("Erro ao atualizar plataforma. Verifique o console.");
   }
+}
+
+function handleBuscarPlataformas() {
+  const nomePlataforma = document.getElementById("nomePlataforma").value;
+  const tableBody = document.querySelector(".table tbody");
+
+  // Limpa o conteúdo atual da tabela
+  tableBody.innerHTML = "";
+
+  // Faz a requisição à API
+  fetch(`/api/plataformas/${nomePlataforma}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Erro na busca da plataforma");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      // Verifica se foram retornadas plataformas
+      if (data.length === 0) {
+        alert("Nenhuma plataforma encontrada.");
+        return;
+      }
+
+      // Itera sobre os resultados e cria as linhas da tabela
+      data.forEach((plataforma) => {
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+                  <td>${plataforma.nome}</td>
+                  <td>
+                     <button 
+          type="button" 
+          class="btn btn-warning mb-2" 
+          data-id="${plataforma.id}" 
+          data-bs-toggle="modal" 
+          data-bs-target="#modalAtualizarPlataforma"
+        >
+          <i class="fa-solid fa-pen-to-square"></i> Editar
+        </button>
+        <button 
+          class="btn btn-danger mb-2" 
+          data-id="${plataforma.id}"
+        >
+          <i class="fa-solid fa-trash"></i> Excluir
+        </button>
+                  </td>
+              `;
+
+        tableBody.appendChild(row);
+
+        document.querySelectorAll(".btn-warning").forEach((btn) => {
+          btn.addEventListener("click", (event) => {
+            const plataformaId = event.currentTarget.getAttribute("data-id");
+            carregarModal(plataformaId);
+          });
+        });
+
+        // Configura eventos de "Excluir"
+        document.querySelectorAll(".btn-danger").forEach((btn) => {
+          btn.addEventListener("click", (event) => {
+            const plataformaId = event.currentTarget.getAttribute("data-id");
+            if (confirm("Tem certeza de que deseja excluir esta plataforma?")) {
+              deletarPlataforma(plataformaId);
+            }
+          });
+        });
+      });
+    })
+    .catch((error) => {
+      console.error("Erro:", error);
+      alert("Erro ao buscar plataformas. Tente novamente mais tarde.");
+    });
 }
