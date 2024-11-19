@@ -31,7 +31,7 @@ public class AdministradorService {
     }
 
     private void updateAdministrador(Administrador existingAdministrador, Administrador updatedAdministrador) {
-        
+
         if (updatedAdministrador.getNome() != null) {
             existingAdministrador.setNome(updatedAdministrador.getNome());
         }
@@ -49,7 +49,6 @@ public class AdministradorService {
         }
     }
 
-
     public Boolean deletarAdministrador(Long id) {
         if (AdministradorRepository.existsById(id)) {
             AdministradorRepository.deleteById(id);
@@ -58,9 +57,13 @@ public class AdministradorService {
         return false;
     }
 
-    // Busca por nome
-    public List<Administrador> listarAdministradorPorNome(String nome) {
-        return AdministradorRepository.findByNome(nome);
+    // Busca por email
+    public List<Administrador> listarAdministradorPorEmail(String email) {
+        List<Administrador> administradores = AdministradorRepository.findByEmail(email);
+        if (administradores.isEmpty()) {
+            throw new RuntimeException("Nenhum administrador encontrado com o email: " + email);
+        }
+        return administradores;
     }
 
     public Boolean login(String nome, String senha) {
@@ -85,4 +88,15 @@ public class AdministradorService {
         // Buscando todos os objetos no banco
         return AdministradorRepository.findAll();
     }
+
+    public Administrador atualizarAdministrador(Long id, String nome, String email) {
+        Administrador administrador = AdministradorRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Administrador não encontrado com o ID: " + id));
+
+        administrador.setNome(nome);
+        administrador.setEmail(email);
+
+        return AdministradorRepository.save(administrador);
+    }
+
 }

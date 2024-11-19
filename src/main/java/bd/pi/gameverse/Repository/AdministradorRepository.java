@@ -11,6 +11,8 @@ public interface AdministradorRepository extends JpaRepository<Administrador, Lo
     // Querry para a busca por nome utilizando o LIKE
     List<Administrador> findByNome(String nome);
 
+    List<Administrador> findByEmail(String email);
+
     Administrador findByNomeAndSenha(String nome, String senha);
 
     /*

@@ -27,27 +27,15 @@
       <form>
         <div class="mb-3 col-md-6">
           <label for="nomeDeUsuario" class="form-label">Nome de usuário:</label>
-          <input
-            type="text"
-            class="form-control"
-            id="nomeDeUsuario"
-            aria-describedby="text"
-            value="Adm22"
-          />
+          <input type="text" class="form-control" id="nomeDeUsuario" value="" />
         </div>
         <div class="mb-3 col-md-6">
-          <label for="email" class="form-label">E-mail:</label>
-          <input
-            type="text"
-            class="form-control"
-            id="e-mail"
-            aria-describedby="e-mail"
-            value="Adm22@gmail.com"
-          />
+          <label for="e-mail" class="form-label">E-mail:</label>
+          <input type="text" class="form-control" id="e-mail" value="" />
         </div>
 
         <div class="mb-3 col-md-6">
-          <label for="senha" class="form-label">Senha:</label>
+          <label for="senha" class="form-label">E:</label>
           <input
             type="password"
             class="form-control"
@@ -61,7 +49,7 @@
             <button class="btn btn-primary">Voltar</button>
           </div>
           <div class="col text-end">
-            <button class="btn btn-success">Atualizar</button>
+            <button id="btnSalvar" class="btn btn-success">Atualizar</button>
           </div>
         </div>
       </form>
@@ -83,5 +71,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="../js/menuAdm.js"></script>
+    <script src="../js/Admin/adm.js"></script>
   </body>
 </html>
