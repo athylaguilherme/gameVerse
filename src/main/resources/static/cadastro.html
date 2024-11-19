@@ -101,7 +101,7 @@
               </div>
               <!--Nome-->
 
-              <form id="formulario">
+              <form method="post" id="formCadastroUsuario" onsubmit="CadastrarUsuario(event)">
                 <div class="mb-3">
                   <label class="mb-2 fw-bold" for="nome">Nome:</label>
                   <input
@@ -119,6 +119,16 @@
                     class="form-control form-control-lg bg-light fs-6"
                     placeholder="Digite aqui seu nick"
                     id="nickname"
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label class="mb-2 fw-bold" for="dtNascimento">Data de Nascimento:</label>
+                  <input
+                    type="date"
+                    class="form-control form-control-lg bg-light fs-6"
+                    placeholder="Digite aqui seu nick"
+                    id="dtNascimento"
                   />
                 </div>
 
@@ -203,5 +213,7 @@
     ></script>
 
     <script src="./js/script.js"></script>
+    
+    <script src="./js/user/usuario.js"></script>
   </body>
 </html>

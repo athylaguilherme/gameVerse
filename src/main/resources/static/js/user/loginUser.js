@@ -1,16 +1,17 @@
 alert("No login");
 document
-  .getElementById("loginButton")
+  .getElementById("btnLoginUsuario")
   .addEventListener("click", async (event) => {
     event.preventDefault();
 
     // Captura os valores dos campos de input
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+    const username = document.getElementById("nicknameLoginUsuario").value;
+    const password = document.getElementById("senhaLoginUsuario").value;
+    
     try {
       // Faz a requisição para o endpoint do login
       const response = await fetch(
-        `http://localhost:8080/api/administradores/login/${username}/${password}`,
+        `http://localhost:8080/api/usuario/login/${username}/${password}`,
         {
           method: "GET",
           headers: {

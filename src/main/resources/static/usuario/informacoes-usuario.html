@@ -11,8 +11,11 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="../css/lista-jogos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   </head>
   <body>
+ 
     <!--Navbar-->
     <header>
       <nav class="navbar navbar-dark navbar-expand-lg bg-danger p-4">
@@ -53,7 +56,7 @@
               </li>
             </ul>
             <!-- Botões de cadastro  -->
-            <div class="ms-auto">
+            <div class="ms-auto" id="loginEntrar">
               <button class="btn btn-outline-light me-2">
                 <a href="../login.html" class="text-light">Entrar</a>
               </button>
@@ -79,22 +82,26 @@
         <div class="col-12 col-md-7 col-lg-8 col-xl-7">
           <div class="border border-info border-3 rounded p-3 text-branco">
             <!-- Campos com informações pessoais -->
-            <h3>James Souza</h3>
-            <p><strong>Nickname:</strong> JamesMaster</p>
-            <p><strong>E-mail:</strong> james.souza@example.com</p>
-            <p><strong>Telefone:</strong> (11) 9999-9999</p>
-
+            <h3 id="nomeUsuario"></h3>
+            <p id="nicknameUsuario"><strong>Nickname:</strong> </p>
+            <p id="emailUsuario"><strong>E-mail:</strong> </p>
+            <p id="telUsuario"><strong>Telefone:</strong> </p>
+            <p id="nascimentoUsuario"><strong>Data de Nascimento:</strong> </p>
             <div class="row justify-content-between">
               <div class="d-flex gap-3">
                 <!-- Botão alterar dados -->
-                <a href="./usuario/Alterardados.html" class="btn btn-dark"
+                <a href="./Alterardados.html" class="btn btn-dark"
                   >Alterar dados</a
                 >
 
                 <!-- Botão alterar senha -->
-                <a href="./usuario/AlterarSenha.html" class="btn btn-dark"
-                  >Alterar Senha</a
-                >
+                <!-- <a href="./AlterarSenha.html" class="btn btn-dark"
+                  >Alterar Senha</a> -->
+                  <form method="post" id="formExcluirUsuario" onsubmit="ExcluirUsuario(event)">
+                    <button type="submit" class="btn btn-dark"
+                    >Excluir Usuário</button>
+                </form>
+
               </div>
             </div>
           </div>
@@ -152,5 +159,13 @@
       crossorigin="anonymous"
     ></script>
     <script src="../js/script.js"></script>
+    <script src="../js/user/usuario.js"></script>
+    <script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+      indexLogado();
+      InfoUsuario();
+    })
+    </script>
   </body>
 </html>

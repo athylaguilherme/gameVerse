@@ -32,8 +32,10 @@ public class TestConfig implements CommandLineRunner {
     public void run(String... args) throws Exception {
         // TODO Auto-generated method stub
 
+
         // Vai aparecer valores trocados mesmo porque eu estava testando o banco de
         // dados
+
 
         Status ativo = new Status(StatusEnum.ATIVO);
         statusRepository.save(ativo);
@@ -43,14 +45,19 @@ public class TestConfig implements CommandLineRunner {
 
         Usuario usuario1 = new Usuario("João", "joa", LocalDate.of(2000, 5, 12), "aa@gmail.com", "123", "asad",
                 new Status(1l, StatusEnum.ATIVO));
-        usuariosRepository.save(usuario1);
+
+       
         Usuario usuario2 = new Usuario("JoãoS", "joaS", LocalDate.of(2000, 5, 12), "aSa@gmail.com", "123", "asad",
                 new Status(2l, StatusEnum.INATIVO));
-        usuariosRepository.save(usuario2);
+        
 
         // Usuario usuario2 = new Usuario(2, "João2", "joa", LocalDate.of(2000, 5, 12),
         // "@gmail.com", "123", null);
+        // Usuario usuario2 = new Usuario(2, "João2", "joa", LocalDate.of(2000, 5, 12),
+        // "@gmail.com", "123", null);
 
+        // usuariosRepository.save(usuario1);
+        // usuariosRepository.save(usuario2);
         // usuariosRepository.save(usuario1);
         // usuariosRepository.save(usuario2);
 
@@ -58,6 +65,7 @@ public class TestConfig implements CommandLineRunner {
                 new Status(1l, StatusEnum.ATIVO));
         Administrador administrador2 = new Administrador("João", "joaS", "A@gmail.com", "123",
                 new Status(2l, StatusEnum.INATIVO));
+        
 
         administradorRepository.save(administrador1);
         administradorRepository.save(administrador2);

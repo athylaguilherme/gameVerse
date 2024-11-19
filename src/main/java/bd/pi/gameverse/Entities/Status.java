@@ -1,7 +1,6 @@
 package bd.pi.gameverse.Entities;
 
 import java.io.Serializable;
-import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -9,7 +8,6 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -32,6 +30,7 @@ public class Status implements Serializable{
 
     @Enumerated(EnumType.STRING)
     private StatusEnum status;
+    
 
     public Status(StatusEnum status) {
         this.status = status;
