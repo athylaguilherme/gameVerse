@@ -1,8 +1,13 @@
 package bd.pi.gameverse.Controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +17,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import bd.pi.gameverse.Entities.Jogo;
 import bd.pi.gameverse.Service.JogoService;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
 
 @RestController
 @RequestMapping("/jogos")
@@ -22,6 +31,23 @@ public class JogoController {
 
     @Autowired
     private JogoService JogosService;
+
+    @PostMapping("upload")
+    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
+        if (file.isEmpty()) {
+            return ResponseEntity.badRequest().body("Arquivo está vazio");
+        }
+
+        try {
+            // Salvar o arquivo localmente (ou em outro local desejado)
+            Path path = Paths.get("uploads/" + file.getOriginalFilename());
+            Files.createDirectories(path.getParent());
+            Files.write(path, file.getBytes());
+            return ResponseEntity.ok("Arquivo enviado com sucesso: " + file.getOriginalFilename());
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao enviar o arquivo");
+        }
+    }
 
     @PostMapping
     public ResponseEntity<Jogo> create(@RequestBody Jogo Jogo) {
@@ -48,4 +74,8 @@ public class JogoController {
         return ResponseEntity.ok().body(JogosService.alterarJogo(jogo));
     }
 
+    @GetMapping("id")
+    public ResponseEntity<?> getById(@RequestParam long id) {
+        return ResponseEntity.ok().body(JogosService.listById(id));
+    }
 }
