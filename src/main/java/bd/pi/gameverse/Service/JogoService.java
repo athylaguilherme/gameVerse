@@ -1,5 +1,6 @@
 package bd.pi.gameverse.Service;
 
+import java.lang.StackWalker.Option;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,5 +46,9 @@ public class JogoService {
     public List<Jogo> getAll() {
         // Buscando todos os objetos no banco
         return JogosRepository.findAll();
+    }
+
+    public Optional<Jogo> listById(long id){
+        return JogosRepository.findById(id);
     }
 }
