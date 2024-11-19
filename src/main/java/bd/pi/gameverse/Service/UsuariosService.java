@@ -5,6 +5,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import bd.pi.gameverse.Entities.Status;
+import bd.pi.gameverse.Entities.StatusEnum;
 import bd.pi.gameverse.Entities.Usuario;
 import bd.pi.gameverse.Repository.UsuariosRepository;
 
@@ -29,10 +31,23 @@ public class UsuariosService {
         return usuariosRepository.save(obj2);
     }
 
-
     public Boolean deletarUsuario(Long id) {
         if (usuariosRepository.existsById(id)) {
             usuariosRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
+
+
+
+    public Boolean excluirUsuario(Long id) {
+        if (usuariosRepository.existsById(id)) {
+            Optional<Usuario> userInativo = usuariosRepository.findById(id);
+            Status inativo = new Status(2l,StatusEnum.INATIVO);
+            userInativo.get().setIdStatus(inativo);
+            usuariosRepository.save(userInativo.get());
             return true;
         }
         return false;
